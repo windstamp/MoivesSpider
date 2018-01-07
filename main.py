@@ -6,6 +6,7 @@ import sqlite3
 
 from dytt8.dytt8Moive import dytt_Lastest
 from model.TaskQueue import TaskQueue
+import time
 from thread.FloorWorkThread import FloorWorkThread
 from thread.TopWorkThread import TopWorkThread
 from utils.Utils import Utils
@@ -37,6 +38,7 @@ def startSpider():
         floorQueue.put(item, 3)
 
     # print(floorQueue.qsize())
+    # time.sleep(1000)
 
     for i in range(THREAD_SUM):
         workthread = FloorWorkThread(floorQueue, i)

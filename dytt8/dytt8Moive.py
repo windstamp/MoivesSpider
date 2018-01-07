@@ -10,6 +10,7 @@
 @Date 2017-08-08
 '''
 import requests
+import time
 from lxml import etree
 
 from model.RequestModel import RequestModel
@@ -35,6 +36,8 @@ class dytt_Lastest(object):
         selector = etree.HTML(response.text)
         # 提取信息
         optionList = selector.xpath("//select[@name='sldd']/text()")
+        # print( 'len(optionList) = ', len(optionList) )
+        # time.sleep(1000)
         return len(optionList) - 1   # 因首页重复, 所以要减1
 
 
@@ -51,6 +54,7 @@ class dytt_Lastest(object):
 
         for t in templist:
             print('request url is ###   ' + t + '    ###')
+        # time.sleep(1000)
         return templist
 
 
@@ -63,6 +67,7 @@ class dytt_Lastest(object):
         templist = selector.xpath("//div[@class='co_content8']/ul/td/table/tr/td/b/a/@href")
         # print(len(templist))
         # print(templist)
+        # time.sleep(1000)
         return templist
 
     @classmethod

@@ -43,6 +43,7 @@ class FloorWorkThread(threading.Thread):
             try:
                 response = requests.get(url, headers=RequestModel.getHeaders(), proxies=RequestModel.getProxies(), timeout=3)
                 print('Floor 子线程 ' + str(self.id) + ' 请求【 ' + url + ' 】的结果： ' + str(response.status_code))
+                # time.sleep(1000)
 
                 # 需将电影天堂的页面的编码改为 GBK, 不然会出现乱码的情况
                 response.encoding = 'GBK'
@@ -55,6 +56,7 @@ class FloorWorkThread(threading.Thread):
                     for item in moivePageUrlList:
                         each = self.host + item
                         # print(each)
+                        # time.sleep(1000)
                         TaskQueue.putToMiddleQueue(each)
                 time.sleep(3) # 5
 
